@@ -1,0 +1,35 @@
+<div id="post_content">
+	<br>
+	<div class="row" >
+		<div class="col-md-6">
+			<%= link_to 'Edit', edit_location_path(@location), class: "button"  %>
+			<%= link_to 'Retour', locations_path, class: "button" %>
+		</div>
+	</div>
+
+	  <div class="row" >
+	    <div class="col-md-6 ">
+	        <div id="post_info">
+	              	<p>
+					  <strong>Address:</strong>
+					  <%= @location.address %>
+					</p>
+
+					<p>
+					  <strong>Latitude:</strong>
+					  <%= @location.latitude %>
+					</p>
+
+					<p>
+					  <strong>Longitude:</strong>
+					  <%= @location.longitude %>
+					</p>
+
+	  					
+	        </div>
+	    </div>
+	    <div class="col-md-4">
+	    	<div id="post_info">
+		    	<%= image_tag "http://maps.google.com/maps/api/staticmap?size=500x350&sensor=false&zoom=15&markers=#{@location.latitude}%2C#{@location.longitude}" %>
+			</div>
+	  	</div>

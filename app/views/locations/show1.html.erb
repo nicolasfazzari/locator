@@ -1,0 +1,92 @@
+<% title @post.title %>
+<% meta_description sanitize(@post.body, :tags=>[]).truncate(180, :separator => " ").html_safe %>
+<% meta_image @post.image.url(:medium) %>
+
+<div id="post_content">
+  <div class="row" >
+    <div class="col-md-6" style="margin-bottom:10px;">
+        <div id="post_info">
+              <div class="titre">
+                <span style="color: rgb(240,87,107); font-size:1.8em; float:right;"><b><%= number_to_currency(@post.price, unit: "Euros", precision:0, format: "%n %u")  %></b></span>
+                <h1><%= @post.title %></h1>
+                 <div class="social">
+                  <%= link_to '<i class="fa fa-facebook-square fa-2x"></i>'.html_safe, 'http://www.facebook.com/sharer.php?u='+request.original_url, :target => :blank %>
+                  <%= link_to '<i class="fa fa-twitter-square fa-2x"></i>'.html_safe, 'https://twitter.com/intent/tweet?url='+request.original_url+'&via=lagirafeconnectee&hashtags='+"&text=Découvrir l'internet des objets connectées :", :target => :blank %>
+                  <%= link_to '<i class="fa fa-google-plus-square fa-2x"></i>'.html_safe, 'https://plus.google.com/share?url='+request.original_url, :target => :blank %>
+                  <%= link_to '<i class="fa fa-linkedin-square fa-2x"></i>'.html_safe, 'http://www.linkedin.com/shareArticle?mini=true&url='+request.original_url+"&title="+@post.title+"&summary=Decouvrir l'internet des objets connectées&source=lagirafeconnectee.com", :target => :blank %>
+                </div><br>
+                  
+              </div>
+              <p class="text-center" style="padding-top:20px;"><%= image_tag @post.image.url(:medium)  %></p>
+              <p class="date">
+                Submitted <%= time_ago_in_words(@post.created_at) %> Ago<br>
+
+              </p>
+              <p class="body" >
+                <%= sanitize @post.body.gsub(/\n/,"<br/>"), :tags => ['br'] %>
+              </p>
+              <br>
+              <p><%= link_to '<i class="glyphicon glyphicon-shopping-cart"> ACHETER</i>'.html_safe, url_with_protocol(@post.link), :target => '_blank', class: "button-price" %></p>
+        </div>
+    </div>
+    <div class="col-md-6 text-center" style="margin-bottom:70px">
+       <div class="row">
+          <div id="video" >
+               <div class="embed-responsive embed-responsive-16by9">
+                  <iframe class="embed-responsive-item" src="<%= @post.video %>"></iframe>
+                </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-md-6">
+              <span>
+                  <%= link_to '<i class="fa fa-home fa-1x"> Accueil</i>'.html_safe, root_path(), class: "button" %>
+                  <%= link_to '<i class="fa fa-arrow-left"> Précédent</i>'.html_safe, @post.previous, class: "button" if @post.previous.present? %>
+                  <%= link_to '<i class="fa fa-arrow-right fa-1x"> Suivant</i>'.html_safe, @post.next, class: "button" if @post.next.present? %><br><br><br>
+
+                  <span style="color: rgb(78,146,224);"> Entreprise : </span><%= @post.entreprise %><br>
+                  <span style="color: rgb(78,146,224);"> Site Web : </span><%= link_to  url_with_protocol(@post.website),url_with_protocol(@post.website),:target => '_blank' %><br>
+                  
+                <% if @post.pays == "France" %>
+                         <span style="color: rgb(78,146,224);"> Made in : </span><%= image_tag ("france.png"), width:'18px' %>
+                      <% else -%>
+                          <span style="color: rgb(78,146,224);"> Mase in : </span><%= @post.pays %>
+                <% end %>
+
+                  
+
+              </span>
+          </div>
+      </div>
+
+      <div class="row" style="position:relative;top:80px;">
+        <div class="col-md-12">
+            <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                  /* * * CONFIGURATION VARIABLES * * */
+                  var disqus_shortname = 'lagirafeconnectee';
+                  
+                  /* * * DON'T EDIT BELOW THIS LINE * * */
+                  (function() {
+                      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                  })();
+              </script>
+              <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+              <script type="text/javascript">
+                  /* * * CONFIGURATION VARIABLES * * */
+                  var disqus_shortname = 'lagirafeconnectee';
+                  
+                  /* * * DON'T EDIT BELOW THIS LINE * * */
+                  (function () {
+                      var s = document.createElement('script'); s.async = true;
+                      s.type = 'text/javascript';
+                      s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                      (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+                  }());
+                </script>
+          </div>
+        </div>

@@ -1,0 +1,51 @@
+<div id="post_content">
+  
+    <br>
+    <h1>Liste des boulangeries</h1>
+    <br>
+
+          <div class="col-md-6">
+              <%= form_tag locations_path, :method => :get do %>
+                <p>
+                  <%= label :location, "Lieu :" %><br>
+                  <%= text_field_tag :search, params[:search] %><br><br>
+                   <%= label :distance, "Distance :" %><br>
+                  <%= text_field_tag :distance, params[:distance] %><br><br>
+                  <%= submit_tag "Rechercher", :name => nil %>
+                </p>
+              <% end %>
+          </div>
+          <div class="col-md-12">
+            <div  class="post_wrapper">
+              <table class="table table-striped">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Address</th>
+                      <th>Zip</th>
+                      <th>City</th>
+                      <th>Latitude</th>
+                      <th>Longitude</th>
+                      <th colspan="3"></th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <% @locations.each do |location| %>
+                      <tr>
+                        <td><%= location.address %></td>
+                        <td><%= location.zip %></td>
+                        <td><%= location.city %></td>
+                        <td><%= location.latitude %></td>
+                        <td><%= location.longitude %></td>
+                        <td width="20px"><%= link_to 'Show', location, class: 'btn btn-primary' %></td>
+                        <td width="20px"><%= link_to 'Edit', edit_location_path(location), class: 'btn btn-default' %></td>
+                        <td width="20px"><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+</div>
