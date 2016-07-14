@@ -4,12 +4,18 @@ class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.json
   def index
-    if params[:search].present?
-      @locations = Location.near(params[:search], params[:distance] || 100)
-    else
-      @locations = Location.all
+
+
+   if params[:distance].present? && (params[:distance].to_i > 0)
+      @search = Location.near(params[:search], params[:distance] || 100).search(params[:q])
+      @locations = @search.result
+    else 
+     @search = Location.ransack(params[:q].try(:merge, m: 'or'))
+     @locations = @search.result
+     @search.build_condition if @search.conditions.empty?
+     @search.build_sort if @search.sorts.empty?
     end
-   
+
   end
 
   # GET /locations/1
@@ -74,6 +80,6 @@ class LocationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def location_params
-      params.require(:location).permit(:address, :zip, :city, :latitude, :longitude)
+      params.require(:location).permit(:address, :zip, :city, :latitude, :longitude,)
     end
 end

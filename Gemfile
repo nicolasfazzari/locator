@@ -30,12 +30,7 @@ gem 'autoprefixer-rails'
 
 gem 'devise'
 
-group :production, :staging do
-	gem 'rails_12factor'
-  	gem "pg"
-end
-
-
+gem 'ransack'
 
 
 # Use ActiveModel has_secure_password
@@ -61,4 +56,4 @@ group :development, :test do
 
 end
 
- group: :production
+
