@@ -35,7 +35,7 @@
             <div class="field">
               Sort:
               <%= f.sort_fields do |s| %>
-                <%= s.sort_select({}, :id => 'attribute') %>
+                <%= s.sort_select({}, :class => 'attribute') %>
               <% end %>
             </div><br>
           <%= f.submit "Rechercher"%>
