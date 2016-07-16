@@ -34,6 +34,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
 }
 
+
 .button {
   outline: none;
   background: transparent;
@@ -49,6 +50,7 @@ h1, h2, h3, h4, h5, h6 {
     }
   }
 }
+
 
 
 .google-maps {
@@ -249,10 +251,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
 
-
-
-
-  input[type="text"],input[type="text"], input[type="email"], input[type="password"], textarea {
+ input[type="email"], input[type="password"], textarea {
     width: 90%;
     border: 1px solid #d6dce0;
     border-radius: .35em;
@@ -260,7 +259,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: .5em 1em;
     line-height: 1.75;
   }
-  input[type="text"] {
+  input[type="text_field"] {
     height: 35px;
   }
   textarea {
@@ -279,4 +278,5 @@ h1, h2, h3, h4, h5, h6 {
       color: rgb(78,146,224);
     }
   }
+
 
