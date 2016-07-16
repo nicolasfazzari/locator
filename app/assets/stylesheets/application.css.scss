@@ -50,6 +50,10 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+#attribute {
+    height: 35px;
+  }
+
 #map-container {
    height: 400px;
    
@@ -226,7 +230,12 @@ h1, h2, h3, h4, h5, h6 {
   .links {
     margin: 2em 0;
   }
-  input[type="text"], input[type="email"], input[type="password"], textarea {
+
+
+
+
+
+  input[type="text"],input[type="text"], input[type="email"], input[type="password"], textarea {
     width: 90%;
     border: 1px solid #d6dce0;
     border-radius: .35em;
