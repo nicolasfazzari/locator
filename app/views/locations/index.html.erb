@@ -2,6 +2,7 @@
   
     <br>
     <h1>Liste des boulangeries</h1>
+    <span class="label label-primary">Nombre de boulangeries : <%= @locations.count %></span>
    
 
 
@@ -31,17 +32,21 @@
               <br>
               <p></span><%= link_to_add_fields "Add Conditions", f, :condition %></p>
 
-           
+            <div class="field">
+              Sort:
+              <%= f.sort_fields do |s| %>
+                <%= s.sort_select({}, :class => 'form-control') %>
+              <% end %>
+            </div><br>
           <%= f.submit "Rechercher"%>
         <% end %>   
       </div>
     </div> 
     
          
-  
           <div class="col-xs-12 col-md-12">
             <div  class="post_wrapper">
-              <table class="table table-striped">
+              
                 <table class="table">
                   <thead>
                     <tr>
@@ -72,4 +77,8 @@
               </div>
             </div>
           </div>
+          <br>
+  
+     <%= will_paginate @location, renderer: BootstrapPagination::Rails %>
+   
 </div>

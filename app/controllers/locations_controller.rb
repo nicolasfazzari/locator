@@ -8,10 +8,10 @@ class LocationsController < ApplicationController
 
    if params[:distance].present? && (params[:distance].to_i > 0)
       @search = Location.near(params[:search], params[:distance] || 100).search(params[:q])
-      @locations = @search.result
+      @locations = @search.result.paginate(:page => params[:page], :per_page => 30)
     else 
-     @search = Location.ransack(params[:q].try(:merge, m: 'or'))
-     @locations = @search.result
+     @search = Location.search(params[:q].try(:merge, m: 'or'))
+     @locations = @search.result.paginate(:page => params[:page], :per_page => 30)
      @search.build_condition if @search.conditions.empty?
      @search.build_sort if @search.sorts.empty?
     end
@@ -21,6 +21,7 @@ class LocationsController < ApplicationController
   # GET /locations/1
   # GET /locations/1.json
   def show
+
   end
 
   # GET /locations/new

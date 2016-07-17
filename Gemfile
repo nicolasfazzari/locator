@@ -32,6 +32,10 @@ gem 'devise'
 
 gem 'ransack'
 
+gem 'will_paginate', '~> 3.0.6'
+
+gem 'will_paginate-bootstrap'
+
 group :development do
   gem 'sqlite3'
 end
