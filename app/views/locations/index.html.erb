@@ -1,6 +1,6 @@
 <div id="post_content">
   
-    <br>
+    <br><br>
     <h1>Liste des boulangeries</h1>
     <span class="label label-primary">Nombre de boulangeries : <%= @locations.count %></span>
    
@@ -67,9 +67,9 @@
                         <td><%= location.zip %></td>
                         <td><%= location.city %></td>
                         <td><%= location.phone %></td>
-                        <td width="20px"><%= link_to 'Show', location, class: 'btn btn-primary' %></td>
-                        <td width="20px"><%= link_to 'Edit', edit_location_path(location), class: 'btn btn-default' %></td>
-                        <td width="20px"><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+                        <td width="20px"><%= link_to 'Voir', location, class: 'btn btn-primary' %></td>
+                        <td width="20px"><%= link_to 'Editer', edit_location_path(location), class: 'btn btn-default' %></td>
+                        <td width="20px"><%= link_to 'Supprimer', location, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
                       </tr>
                     <% end %>
                   </tbody>
