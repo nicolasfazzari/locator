@@ -51,6 +51,72 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+.red {
+  color: #ca0271;
+}
+
+.green {
+  color: #c0c21b;
+  font-size:15px;
+}
+
+.btn.outline {
+  background: none;
+  padding: 6px 6px;
+}
+
+.btn-green.outline {
+  border: 2px solid #c0c21b;
+  color: #c0c21b;
+}
+
+.btn-green.outline:hover, .btn-green.outline:focus, .btn-green.outline:active, .btn-green.outline.active, .open > .dropdown-toggle.btn-green {
+  color: #fff;
+  border-color: #c0c21b ;
+  background: #c0c21b ;
+}
+.btn-green.outline:active, .btn-green.outline.active {
+  border-color: #c0c21b;
+  color: #c0c21b;
+  box-shadow: none;
+}
+
+.btn-red.outline {
+  border: 2px solid #ca0271;
+  color: #ca0271;
+}
+
+.btn-red.outline:hover, .btn-red.outline:focus, .btn-red.outline:active, .btn-red.outline.active, .open > .dropdown-toggle.btn-red {
+  color: #fff;
+  border-color: #ca0271;
+  background: #ca0271;
+}
+.btn-red.outline:active, .btn-red.outline.active {
+  border-color: #ca0271;
+  color: #ca0271;
+  box-shadow: none;
+}
+
+.btn-grey.outline {
+  border: 2px solid #CCCCCC;
+  color: #CCCCCC;
+}
+
+.btn-grey.outline:hover, .btn-grey.outline:focus, .btn-grey.outline:active, .btn-grey.outline.active, .open > .dropdown-toggle.btn-grey {
+  color: #fff;
+  border-color: #CCCCCC;
+  background: #CCCCCC;
+}
+.btn-grey.outline:active, .btn-grey.outline.active {
+  border-color: #CCCCCC;
+  color: #CCCCCC;
+  box-shadow: none;
+}
+
+
+
+
+
 
 
 .google-maps {
@@ -71,6 +137,13 @@ h1, h2, h3, h4, h5, h6 {
 .attribute {
     height: 35px;
   }
+
+.btn-primary {
+    background-color:#c0c21b;
+    border-color:#c0c21b;
+    text-color:white;
+  }
+
 
 
 #map-container {
