@@ -114,7 +114,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-
+.alert-info{
+  background-color :#ca0271;
+  color:white;
+  opacity:0.8;
+}
 
 
 
@@ -159,7 +163,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .flash {
   position: relative;
-  top:50px;
+  top:92px;
 }
 
 .clearfix:after {
@@ -325,7 +329,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
  input[type="email"], input[type="password"], textarea {
-    width: 90%;
+    width: 50%;
     border: 1px solid #d6dce0;
     border-radius: .35em;
     margin-top: 10px;
