@@ -338,6 +338,7 @@ h1, h2, h3, h4, h5, h6 {
   }
   input[type="text_field"] {
     height: 35px;
+    
   }
   textarea {
     min-height: 180px;
@@ -351,8 +352,8 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 1.5em;
     margin-left: .5em;
     &:hover {
-      border: 1px solid rgb(78,146,224);
-      color: rgb(78,146,224);
+      border: 1px solid #c0c21b;
+      color: #c0c21b;
     }
   }
 

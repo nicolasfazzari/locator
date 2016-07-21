@@ -9,11 +9,19 @@ class LocationsController < ApplicationController
    if params[:distance].present? && (params[:distance].to_i > 0)
       @search = Location.near(params[:search], params[:distance] || 100).search(params[:q])
       @locations = @search.result.paginate(:page => params[:page], :per_page => 30)
+      respond_to do |format|
+        format.html
+        format.xls { send_data @locations.to_csv(col_sep: "\t"), :filename => "Liste_boulangeries.xls", :disposition => "attachment" }
+      end
     else 
      @search = Location.search(params[:q].try(:merge, m: 'or'))
      @locations = @search.result.paginate(:page => params[:page], :per_page => 30)
      @search.build_condition if @search.conditions.empty?
      @search.build_sort if @search.sorts.empty?
+     respond_to do |format|
+        format.html
+        format.xls { send_data @locations.to_csv(col_sep: "\t"), :filename => "Liste_boulangeries.xls", :disposition => "attachment" }
+      end
     end
 
   end
