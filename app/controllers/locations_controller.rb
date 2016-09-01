@@ -16,7 +16,7 @@ class LocationsController < ApplicationController
     else 
      @search = Location.search(params[:q].try(:merge, m: 'or'))
      @locations = @search.result.paginate(:page => params[:page], :per_page => 30)
-     @search.build_condition if @search.conditions.empty?
+     #  @search.build_condition if @search.conditions.empty?
      @search.build_sort if @search.sorts.empty?
      respond_to do |format|
         format.html
