@@ -13,3 +13,12 @@ Ransack.configure do |config|
   validator: proc { |v| v.present? },
   type: :string
 end
+
+Ransack.configure do |config|
+  config.add_predicate 'has_any_eq',
+  arel_predicate: 'eq',
+  formatter: proc { |v| (v.scan(/[^\d]/, '').flatten.compact.map{|t| "%#{t}%"}) },
+  validator: proc { |v| v.present? },
+  type: :integer
+end
+

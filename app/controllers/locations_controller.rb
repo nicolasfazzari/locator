@@ -14,7 +14,7 @@ class LocationsController < ApplicationController
         format.xls { send_data @locations.to_csv(col_sep: "\t"), :filename => "Liste_boulangeries.xls", :disposition => "attachment" }
       end
     else 
-     @search = Location.search(params[:q].try(:merge, m: 'or'))
+     @search = Location.search(params[:q])
      @locations = @search.result.paginate(:page => params[:page], :per_page => 30)
      #  @search.build_condition if @search.conditions.empty?
      @search.build_sort if @search.sorts.empty?
@@ -91,6 +91,7 @@ class LocationsController < ApplicationController
     def location_params
       params.require(:location).permit(:address, :zip, :city, :latitude, :longitude, :phone, :name)
     end
+
 
     
 end

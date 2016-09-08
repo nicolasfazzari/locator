@@ -25,10 +25,11 @@
         <div class="col-xs-12 col-md-6">
           <div  class="post_wrapper">
           <h3>Recherche par filtre :</h3>
+            <div class="form-group">
              <%= search_form_for @search do |f| %>
-
-              <%= f.text_field :city_has_any_term, class: "form-control", id: "ville" %><br>
-              
+              <%= f.text_field :city_or_zip_has_any_term, id: "ville", class: "form-control", :placeholder => 'Sélectionner des villes ou entrer des codes postaux',:style => 'width:100%;' %><br>
+             
+             </div>
               <%= f.submit "Rechercher", class: 'submit' %>
             <% end %>
                 
@@ -92,4 +93,6 @@
         },
         showAutocompleteOnFocus: true
       })
+
+      $('#code_postal').tokenfield()
     </script>
