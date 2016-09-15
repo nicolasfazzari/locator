@@ -88,7 +88,7 @@
 <script type="text/javascript">
       $('#ville').tokenfield({
         autocomplete: {
-          source: <%= raw Location.all.map {|a| a.city} %>,
+         // source: <%= raw Location.all.map {|a| a.city} %>,
           delay: 100
         },
         showAutocompleteOnFocus: true
