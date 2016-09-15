@@ -2,7 +2,7 @@ class Location < ActiveRecord::Base
 	
 	geocoded_by :address
 	geocoded_by :full_address
-	after_validation :geocode
+	after_validation :geocode, if: ->(obj){ !obj.latitude.present? }
 
 	def full_address
 		"#{address},#{zip},#{city}"
@@ -18,5 +18,7 @@ def self.to_csv(options = {})
     end
   end
 end
+
+
 
 end

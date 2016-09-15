@@ -21,7 +21,9 @@
           <% if user_signed_in? %>
             <div class="buttons">
               <%= link_to 'Déconnexion', destroy_user_session_path, :method => :delete, class: "button" %>
-              <%= link_to "Nouvel item", new_location_path, class: "button" %>
+                 <% if current_user.admin? %>
+                  <%= link_to "Nouvel item", new_location_path, class: "button" %>
+                  <% end %>
             </div>
           <% else %>
             <div class="buttons">

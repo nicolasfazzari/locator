@@ -68,8 +68,10 @@
                         <td><%= location.zip %></td>
                         <td><%= location.city %></td>
                         <td width="20px"><%= link_to 'Voir', location, class: 'btn btn-green btn-xs outline' %></td>
-                        <td width="20px"><%= link_to 'Editer', edit_location_path(location), class: 'btn btn-grey btn-xs outline' %></td>
-                        <td width="20px"><%= link_to 'Supprimer', location, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-red btn-xs outline" %></td>
+                        <% if current_user.admin? %>
+                          <td width="20px"><%= link_to 'Editer', edit_location_path(location), class: 'btn btn-grey btn-xs outline' %></td>
+                          <td width="20px"><%= link_to 'Supprimer', location, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-red btn-xs outline" %></td>
+                        <% end %>
                       </tr>
                     <% end %>
                   </tbody>
