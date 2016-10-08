@@ -33,9 +33,14 @@ gem 'devise'
 gem 'ransack'
 
 gem 'compass-rails'
+
 gem 'chosen-rails'
+
 gem 'bootstrap_tokenfield_rails'
+
 gem 'jquery-ui-rails'
+
+gem 'gmaps4rails'
 
 
 gem 'will_paginate', '~> 3.0.6'

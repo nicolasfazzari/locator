@@ -8,8 +8,6 @@ class Location < ActiveRecord::Base
 		"#{address},#{zip},#{city}"
 	end
 
-	
-
 def self.to_csv(options = {})
   CSV.generate(options) do |csv|
     csv << column_names
