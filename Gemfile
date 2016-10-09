@@ -50,7 +50,7 @@ gem 'will_paginate-bootstrap'
 
 gem 'rails4-autocomplete'
 
-gem 'jquery-ui-rails'
+
 
 group :development do
   gem 'sqlite3'
