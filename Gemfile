@@ -42,8 +42,6 @@ gem 'jquery-ui-rails'
 
 gem 'gmaps4rails'
 
-gem 'rails4-autocomplete'
-
 gem 'will_paginate', '~> 3.0.6'
 
 gem 'will_paginate-bootstrap'
