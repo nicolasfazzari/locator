@@ -3,9 +3,9 @@ class LocationsController < ApplicationController
   
   # GET /locations
   # GET /locations.json
+
   def index
-
-
+  
    if params[:distance].present? && (params[:distance].to_i > 0)
       @search = Location.near(params[:search], params[:distance] || 100).search(params[:q])
       @locations = @search.result.paginate(:page => params[:page], :per_page => 30)

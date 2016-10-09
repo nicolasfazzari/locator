@@ -87,12 +87,18 @@
 
 <script type="text/javascript">
       $('#ville').tokenfield({
-        autocomplete: {
-         // source: <%= raw Location.all.map {|a| a.city} %>,
-          delay: 100
-        },
-        showAutocompleteOnFocus: true
-      })
+       autocomplete: {
+         source: "/search_suggestions",
+        //  delay: 100
+       },
+        //showAutocompleteOnFocus: true
+    })
 
-      $('#code_postal').tokenfield()
+     
+
+     // $('#code_postal').tokenfield()
+
+     
     </script>
+
+
