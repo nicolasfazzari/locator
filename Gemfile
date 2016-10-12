@@ -46,10 +46,9 @@ gem 'will_paginate', '~> 3.0.6'
 
 gem 'will_paginate-bootstrap'
 
-gem 'rails4-autocomplete'
+
 
 gem 'rails_12factor' 
-
 
 
 group :development do
