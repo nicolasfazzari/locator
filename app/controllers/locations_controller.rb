@@ -14,13 +14,14 @@ class LocationsController < ApplicationController
         format.xls { send_data @locations.to_csv(col_sep: "\t"), :filename => "Liste_boulangeries.xls", :disposition => "attachment" }
       end
     else 
-     @search = Location.search(params[:q])
+     @search = Location.search(search_params)
      @locations = @search.result.paginate(:page => params[:page], :per_page => 30)
+
      #  @search.build_condition if @search.conditions.empty?
      @search.build_sort if @search.sorts.empty?
      respond_to do |format|
         format.html
-        format.xls { send_data @locations.to_csv(col_sep: "\t"), :filename => "Liste_boulangeries.xls", :disposition => "attachment" }
+        format.xls { send_data @search.result.to_csv(col_sep: "\t"), :filename => "Liste_boulangeries.xls", :disposition => "attachment" }
       end
     end
 
@@ -86,6 +87,37 @@ class LocationsController < ApplicationController
     end
   end
 
+     # CHECK THE SESSION FOR SEARCH PARAMETERS IS THEY AREN'T IN THE REQUEST
+    def search_params
+      if params[:q] == nil
+          params[:q] = session[search_key]
+      end
+      if params[:q]
+            session[search_key] = params[:q]
+          end
+          params[:q]
+    end
+    # DELETE SEARCH PARAMETERS FROM THE SESSION
+    def clear_search_index
+        if params[:search_cancel]
+          params.delete(:search_cancel)
+          if(!search_params.nil?)
+              search_params.each do |key, param|
+                  search_params[key] = nil
+              end
+          end
+          # REMOVE FROM SESSION
+          session.delete(search_key)
+        end
+    end
+ 
+  protected
+    # GENERATE A GENERIC SESSION KEY BASED ON TEH CONTROLLER NAME
+    def search_key
+      "#{location}_search".to_sym
+    end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_location
@@ -96,7 +128,6 @@ class LocationsController < ApplicationController
     def location_params
       params.require(:location).permit(:address, :zip, :city, :latitude, :longitude, :phone, :name)
     end
-
 
     
 end
