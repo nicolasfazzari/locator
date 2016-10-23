@@ -3,6 +3,7 @@
 <head>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
+  
   <%= csrf_meta_tags %>
   
  
@@ -21,7 +22,7 @@
             <div class="buttons">
               <%= link_to 'Déconnexion', destroy_user_session_path, :method => :delete, class: "button" %>
                  <% if current_user.admin? %>
-                  <%= link_to "Nouvel item", new_location_path, class: "button" %>
+                  <%= link_to "Admin", rails_admin_path, class: "button" %>
                   <% end %>
             </div>
           <% else %>

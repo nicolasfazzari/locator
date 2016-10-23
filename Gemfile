@@ -48,6 +48,8 @@ gem 'will_paginate-bootstrap'
 
 gem 'rails_12factor' 
 
+gem 'rails_admin', '~> 1.0'
+
 
 group :development do
   gem 'sqlite3'
