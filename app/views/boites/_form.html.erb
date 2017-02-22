@@ -1,0 +1,41 @@
+<%= form_for(@boite) do |f| %>
+  <% if @boite.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@boite.errors.count, "error") %> prohibited this boite from being saved:</h2>
+
+      <ul>
+      <% @boite.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :departement %><br>
+    <%= f.text_field :departement %>
+  </div>
+  <div class="field">
+    <%= f.label :zip %><br>
+    <%= f.number_field :zip %>
+  </div>
+  <div class="field">
+    <%= f.label :commune %><br>
+    <%= f.text_field :commune %>
+  </div>
+  <div class="field">
+    <%= f.label :boite %><br>
+    <%= f.text_field :boite %>
+  </div>
+  <div class="field">
+    <%= f.label :latitude %><br>
+    <%= f.text_field :latitude %>
+  </div>
+  <div class="field">
+    <%= f.label :longitude %><br>
+    <%= f.text_field :longitude %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

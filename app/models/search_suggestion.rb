@@ -6,10 +6,10 @@ class SearchSuggestion < ActiveRecord::Base
 		suggestions.order("popularity desc").limit(10).pluck(:term)
 	end
 
-	def self.index_locations
-		Location.find_each do |location|
-			index_term(location.city)
-			location.city.split.each { |t| index_term(t) }
+	def self.index_boites
+		Boite.find_each do |location|
+			index_term(location.commune)
+			location.commune.split.each { |t| index_term(t) }
 		end
 	end
 

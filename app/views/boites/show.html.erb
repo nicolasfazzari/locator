@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Departement:</strong>
+  <%= @boite.departement %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @boite.zip %>
+</p>
+
+<p>
+  <strong>Commune:</strong>
+  <%= @boite.commune %>
+</p>
+
+<p>
+  <strong>Boite:</strong>
+  <%= @boite.boite %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @boite.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @boite.longitude %>
+</p>
+
+<%= link_to 'Edit', edit_boite_path(@boite) %> |
+<%= link_to 'Back', boites_path %>

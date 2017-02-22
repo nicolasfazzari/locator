@@ -1,20 +1,20 @@
 Rails.application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  resources :search_suggestions
-  devise_for :users do
-    get '/users/sign_out' => 'devise/sessions#destroy'
+  
+    mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+    resources :search_suggestions
+      devise_for :users do
+        get '/users/sign_out' => 'devise/sessions#destroy'
   end
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  resources :locations do
-    get :autocomplete_location_city, :on => :collection
+  resources :boites do
     collection do
-      match'search' => 'locations#index', :via => [:get,:post],:as =>:search
+      match'search' => 'boites#index', :via => [:get,:post],:as =>:search
     end
   end
   # You can have the root of your site routed with "root"
-   root 'locations#index'
+   root 'boites#index'
 
 
 

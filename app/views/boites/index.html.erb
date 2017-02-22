@@ -1,0 +1,100 @@
+<div id="post_content">
+  
+    <br><br>
+    <h1>Liste des boites</h1>
+    <span class="green">Nombre de boites : <%= @boites.sum(:boite) %></span>
+   
+
+
+     <div class="row">
+      <div class="col-xs-12 col-md-6">
+        <div  class="post_wrapper">
+          <h3>Recherche par rayon :</h3>
+             <div class="form-group">
+                <%= search_form_for @search do |f| %>
+                  <%= label :lieu, "Lieu :" %>
+                  <%= text_field_tag :search, params[:search], class: "form-control", :style => 'width:100%;'  %><br>
+                  <%= label_tag :distance, "Rayon :"  %>
+                  <%= text_field_tag :distance, params[:distance], class: "form-control", :style => 'width:100%;'  %>
+              </div>
+             <%= f.submit "Rechercher"%>
+             <% end %>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-md-6">
+          <div  class="post_wrapper">
+          <h3>Recherche par filtre :</h3>
+            <div class="form-group">
+             <%= search_form_for @search do |f| %>
+              <%= f.text_field :commune_or_zip_has_any_term, id: "ville", class: "form-control", :placeholder => 'Sélectionner des communes ou entrer des codes postaux',:style => 'width:100%;' %><br>
+             
+             </div>
+              <%= f.submit "Rechercher", class: 'submit' %>
+            <% end %>
+                
+                
+        </div>
+      </div> 
+   
+         
+          <div class="col-xs-12 col-md-12">
+            <div class="post_wrapper">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th><%= sort_link @search, :departement, "Departement" %></th>
+                      <th><%= sort_link @search, :commune, "Commune" %></th>
+                      <th><%= sort_link @search, :zip, "Code postale" %></th>
+                      <th><%=  sort_link @search, :boite, "Boite" %></th>
+                      <th colspan="3">
+                      <p>
+                        Télécharger :
+                        <%= link_to "Excel", search_boites_path(params.merge(format: "xls")) %>
+                      </p>
+                      </th>
+                    </tr>
+                  </thead>
+                
+                  <tbody>
+
+                   
+
+                    <% @boites.each do |boite| %>
+
+                      <tr>
+                        <td><%= boite.departement %></td>
+                        <td><%= boite.commune %></td>
+                        <td><%= boite.zip %></td>
+                        <td><%= boite.boite %></td>
+                        <td width="20px"><%= link_to 'Voir', boite, class: 'btn btn-green btn-xs outline','data-no-turbolink' => true %></td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <br>
+  
+     <%= will_paginate @location, renderer: BootstrapPagination::Rails %>
+   
+</div>
+
+<script type="text/javascript">
+      $('#ville').tokenfield({
+       autocomplete: {
+         source: "/search_suggestions",
+        //  delay: 100
+       },
+        //showAutocompleteOnFocus: true
+    })
+
+     
+
+     // $('#code_postal').tokenfield()
+
+     
+    </script>
+
+

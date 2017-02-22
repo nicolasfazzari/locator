@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  departement: MyString
+  zip: 1
+  commune: MyString
+  boite: MyString
+  latitude: 1.5
+  longitude: 1.5
+
+two:
+  departement: MyString
+  zip: 1
+  commune: MyString
+  boite: MyString
+  latitude: 1.5
+  longitude: 1.5
